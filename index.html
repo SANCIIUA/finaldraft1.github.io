@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>convForm - example</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="dist/jquery.convform.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<section id="all">
+	    <div class="vertical-align">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-sm-6 col-sm-offset-3 col-xs-offset-0">
+	                    <div class="card no-border">
+	                        <div id="chat" class="conv-form-wrapper">
+	                            <form action="" method="GET" class="hidden">
+	                                <select data-conv-question="Hello! I am bot. Do you want to speak with me?" name="first-question">
+	                                    <option value="yes">Yes</option>
+	                                    <option value="sure">Sure!</option>
+	                                </select>
+	                                <input type="text" name="name" data-conv-question="How should I call you?|Okay! Please, tell me your name first.">
+	                                <input type="text" data-conv-question="Nice to meet you, {name}:0!. " data-no-answer="true">
+	                                <select name="multi[]" data-conv-question="How has your day been going?">
+	                                    <option value="Great!">Great!</option>
+	                                    <option value="Okay">Okay</option>
+	                                    <option value="Bad">Bad</option>
+	                                    <option value="Terrible">Terrible!</option>
+	                                </select>
+									<div data-conv-fork="multi[]">
+	                                    <div data-conv-case="Great!">
+	                                        <input type="text" data-conv-question="Glad to hear that! My day has been great as well!" data-no-answer="true">
+											<input type="text" data-conv-question="Is there anything in particular that you'd like to talk about?">
+	                                    </div>
+	                                    <div data-conv-case="Okay">
+		                                    <select name="thought" data-conv-question="So your day could be better I imagine?">
+		                                    	<option value="yes">Yes</option>
+		                                    	<option value="no">No..</option>
+		                                    </select>
+	                                    </div>
+										<div data-conv-case="Bad">
+		                                    <select name="thought" data-conv-question="I'm sorry, is there anything I could do to help?">
+		                                    	<option value="yes">Yes</option>
+		                                    	<option value="no">No..</option>
+		                                    </select>
+	                                    </div>
+										<div data-conv-case="Terrible">
+		                                    <select name="thought" data-conv-question="Oh no! Is there a reason why your day is so terrible?">
+		                                    	<option value="yes">Yes</option>
+		                                    	<option value="no">No..</option>
+		                                    </select>
+	                                    </div>
+	                                </div>
+	                                
+	                                
+	                            </form>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</section>
+	<script type="text/javascript" src="jquery-1.12.3.min.js"></script>
+	<script type="text/javascript" src="dist/autosize.min.js"></script>
+	<script type="text/javascript" src="dist/jquery.convform.js"></script>
+
+	<script>
+		jQuery(function($){
+			convForm = $('#chat').convform({selectInputStyle: 'disable'});
+			console.log(convForm);
+		});
+	</script>
+</body>
+</html>
